@@ -1,11 +1,35 @@
 # https://lovit.github.io/archives/#/page2
+
+'''
+주요사업
+목적사업
+주요제품
+주요사업의 내용
+당사가 생산하는
+당사가 납품하는
+향후 추진 사업
+당사는
+영위할
+공급해 오고
+공급하고
+
+1. 기업보고서(xml) 에서 문단 p 태그 기준으로 태깅하고
+2. 문단별로 문장조합
+
+3. 상위 키워드 기준으로 내용검색하여
+4. 키워드 조건 만족하는 문단 발견 시 키워드 분석 대상에 포함
+
+'''
+
+
+
 from collections import Counter
 from konlpy.tag import Komoran
 from konlpy.tag import Kkma
 from konlpy.tag import Twitter
 
-komoran = Komoran()
 
+komoran = Komoran()
 
 def main():
     wd_1 = set('가족같은')
@@ -65,9 +89,14 @@ if __name__ == '__main__':
     article = kkma.sentences(desc)
     print(article)
 
+    twitter = Twitter()
+    for sentence in article:
+        out_str = twitter.nouns(sentence)
+        print(out_str)
+
 
     words = komoran.pos(desc, join=True)
-    print(words)
+    #print(words)
 
     #print(phar)
 
