@@ -1,4 +1,11 @@
 # https://lovit.github.io/archives/#/page2
+from collections import Counter
+from konlpy.tag import Komoran
+from konlpy.tag import Kkma
+from konlpy.tag import Twitter
+
+komoran = Komoran()
+
 
 def main():
     wd_1 = set('가족같은')
@@ -25,6 +32,7 @@ def tokenized(src):
             sent = ''
         cnt += 1
 
+
     for wd in li:
         print(wd)
 
@@ -49,10 +57,21 @@ if __name__ == '__main__':
     f.close()
 
     phars = desc.split('.')
-    for phar in phars:
-        print(phar)
+    #for phar in phars:
 
     #tokenized(desc)
+
+    kkma = Kkma()
+    article = kkma.sentences(desc)
+    print(article)
+
+
+    words = komoran.pos(desc, join=True)
+    print(words)
+
+    #print(phar)
+
+
     #str_cmp('집합에 관련된 것을 쉽게 처리하기 위해 만든 자료형이다.','집합(set)은 파이썬 2.3부터 지원하기 시작한 자료형으로')
     #main()
 
